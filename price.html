@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   <title>가격표 - 롤 대리 후기</title>
   <style>
     body {
@@ -23,16 +23,23 @@
       justify-content: space-between;
       padding: 0 20px;
       z-index: 1000;
+      flex-wrap: wrap;
     }
     .logo {
       font-size: 20px;
       font-weight: bold;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       margin-left: 15px;
       font-size: 14px;
+      white-space: nowrap;
     }
     .container {
       padding-top: 80px;
