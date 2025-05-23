@@ -35,4 +35,152 @@
       gap: 20px;
       margin-left: 30px;
     }
-    n
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+    .kakao, .telegram {
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 30px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .kakao {
+      background-color: #ffeb00;
+      color: #000;
+    }
+    .telegram {
+      background-color: #0088cc;
+      color: #fff;
+    }
+    .spacer {
+      height: 100px;
+    }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .content h1 {
+      color: #fff;
+    }
+    .notice-board {
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .notice {
+      background: #2c2c2c;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .notice button {
+      background: none;
+      color: #ff6666;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .write-box {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .write-box input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+    .write-box button {
+      padding: 8px 14px;
+      background-color: #ffc107;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="darkteam_logo_raw.jpg" alt="DARK TEAM"></a>
+    </div>
+    <nav>
+      <a href="lineup.html">기사 라인업</a>
+      <a href="price.html">가격표</a>
+      <a href="verify.html">작업인증</a>
+      <a href="progress.html">작업현황</a>
+      <a href="review.html">고객후기</a>
+      <a href="notice.html">공지사항</a>
+    </nav>
+    <div class="right">
+      <a class="telegram" href="https://t.me/yourTelegramID" target="_blank">텔레그램 상담</a>
+      <a class="kakao" href="https://open.kakao.com/o/yourchatlink" target="_blank">카톡상담</a>
+    </div>
+  </header>
+
+  <div class="spacer"></div>
+
+  <div class="content">
+    <h1>공지사항</h1>
+    <div class="notice-board" id="noticeBoard">
+      <!-- 글 목록 출력 -->
+    </div>
+
+    <div class="write-box">
+      <input type="text" id="noticeInput" placeholder="새 공지사항을 입력하세요." />
+      <button onclick="addNotice()">글쓰기</button>
+    </div>
+  </div>
+
+  <footer>
+    ⓒ 2025 DARK TEAM. All rights reserved.
+  </footer>
+
+  <script>
+    const board = document.getElementById('noticeBoard');
+
+    function addNotice() {
+      const input = document.getElementById('noticeInput');
+      const text = input.value.trim();
+      if (text === '') return;
+
+      const password = prompt("관리자 비밀번호를 입력하세요");
+      if (password !== "aass1122") {
+        alert("비밀번호가 틀렸습니다.");
+        return;
+      }
+
+      const div = document.createElement('div');
+      div.className = 'notice';
+      div.innerHTML = `
+        <span>${text}</span>
+        <button onclick="this.parentElement.remove()">❌</button>
+      `;
+      board.prepend(div);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
